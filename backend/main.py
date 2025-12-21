@@ -48,7 +48,7 @@ print("✅ Environment variables injected")
 
 print("🔌 Connecting to Gemini...")
 client = genai.Client(api_key=API_KEY)
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-3-flash-preview"
 print(f"✅ Gemini connected | Model = {MODEL_NAME}")
 
 app = FastAPI(title="NyayaConnect Backend", version="4.0")
@@ -312,3 +312,4 @@ async def analyze_image(
     prompt = build_prompt(text, doc_type, language, verbosity)
     response = client.models.generate_content(model=MODEL_NAME, contents=prompt)
     return extract_json(response.text)
+
