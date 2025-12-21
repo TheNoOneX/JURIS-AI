@@ -1,0 +1,472 @@
+:root {
+  --primary: #07173d;       /* Deep Navy */
+  --primary-light: #1e293b; /* Lighter Navy for cards */
+  --accent: #2563eb;        /* Bright Blue for Actions */
+  --bg-body: #cbd5e1;       /* Desktop Background */
+  --bg-app: #f8fafc;        /* App Background */
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --danger: #ff0000; /* Bright Red */
+  --warning: #ffcc00; /* Bright Yellow */
+  --success: #00cc00; /* Bright Green */
+  --radius: 24px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-body);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* === THE APP SHELL (Fixes Windows View) === */
+.app {
+  width: 100%;
+  max-width: 480px; /* Limits width on PC */
+  background: var(--bg-app);
+  box-shadow: 0 0 50px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* === HEADER HERO SECTION === */
+.header-hero {
+  background: var(--primary);
+  padding: 40px 24px 80px 24px;
+  color: white;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.header-hero h2 { font-size: 22px; font-weight: 700; margin: 0 0 8px 0; }
+.header-hero p { opacity: 0.8; font-size: 14px; margin: 0; }
+
+.logo-img {
+  height: 200px;
+  width: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+/* === CONTENT AREA (Cards Pull Up) === */
+.content-area {
+  padding: 0 20px 40px 20px;
+  margin-top: -50px; /* This pulls content into the blue header */
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* === CARDS === */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: transform 0.2s ease;
+}
+
+.card:hover { transform: translateY(-2px); }
+
+/* === ACTION ITEMS (List Style) === */
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: white;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.action-item:active { transform: scale(0.98); background: #f1f5f9; }
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  background: #eff6ff;
+  color: var(--accent);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+/* === FORMS & INPUTS === */
+select, .problem-textarea, .file-input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+  font-size: 16px;
+  background: #fff;
+  font-family: inherit;
+  margin-top: 10px;
+}
+
+select:focus, .problem-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* === BUTTONS === */
+.btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  transition: background 0.2s;
+  margin-top: 10px;
+}
+
+.btn:hover { background: var(--primary-light); }
+.btn:active { transform: scale(0.98); }
+
+/* === MIC BUTTON (Large) === */
+.mic-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.mic-btn-large {
+  width: 100px;
+  height: 100px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mic-btn-large.recording {
+  background: var(--danger);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 15px rgba(220, 38, 38, 0.15);
+}
+
+/* === LOADER === */
+.loader-overlay {
+  position: fixed; inset: 0;
+  background: rgba(255,255,255,0.95);
+  z-index: 999;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.spinner {
+  width: 50px; height: 50px;
+  border: 4px solid #e2e8f0; border-top-color: var(--accent);
+  border-radius: 50%; animation: spin 1s infinite linear;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hidden { display: none; }
+
+/* === RISK BADGES === */
+/* .risk-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+.risk-badge { padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 12px; letter-spacing: 1px; }
+.risk-low { background: #dcfce7; color: #166534; }
+.risk-medium { background: #fef9c3; color: #854d0e; }
+.risk-high { background: #fee2e2; color: #991b1b; } */
+
+.risk-card {
+  text-align: center;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.risk-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.risk-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: white; /* Text is white for better contrast on bright colors */
+  background: #cbd5e1; /* Default grey */
+  transition: background 0.5s ease;
+}
+
+#riskScoreText {
+  font-size: 48px; /* Larger text for the percentage */
+  font-weight: 800;
+  color: var(--primary);
+  display: block;
+  margin: 10px 0;
+  font-variant-numeric: tabular-nums; /* Prevents jittering while counting */
+}
+
+/* BRIGHT COLOR CLASSES */
+.risk-low {
+  background-color: var(--success) !important;
+  color: white;
+  box-shadow: 0 0 15px rgba(0, 204, 0, 0.4);
+}
+
+.risk-medium {
+  background-color: var(--warning) !important;
+  color: black; /* Black text reads better on bright yellow */
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+}
+
+.risk-high {
+  background-color: var(--danger) !important;
+  color: white;
+  animation: pulseRisk 1.5s infinite;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+@keyframes pulseRisk {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+/* === LISTS === */
+.simple-list { padding-left: 20px; line-height: 1.6; margin: 10px 0; }
+.simple-list li { margin-bottom: 8px; }
+
+/* === AUDIO BUTTON === */
+.speak-btn { background: none; border: none; font-size: 20px; cursor: pointer; float: right; opacity: 0.6; }
+.speak-btn:hover { opacity: 1; transform: scale(1.1); }
+
+/* ===== Verbosity Pill Toggle ===== */
+.verbosity-pill {
+  display: flex;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.verbosity-pill input {
+  display: none;
+}
+
+.verbosity-pill label {
+  flex: 1;
+  text-align: center;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.25s ease;
+}
+
+.verbosity-pill input:checked + label {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* ===== Apple-like Glass Transition ===== */
+.fade-glass {
+  animation: glassFade 280ms ease-out;
+}
+
+/* ======================================================
+   RESULT PAGE – VISUAL & UX ENHANCEMENTS
+   (Additive, Safe, Backward Compatible)
+   ====================================================== */
+
+/* Flow container for better spacing */
+.result-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Fade-in glass effect (subtle premium feel) */
+.fade-glass {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RISK CARD (ANCHOR)
+   ========================= */
+.risk-card {
+  margin-bottom: 24px;
+}
+
+/* =========================
+   SUMMARY
+   ========================= */
+.summary-card {
+  background: #ffffff;
+}
+
+/* =========================
+   RED FLAGS (WARNING)
+   ========================= */
+.redflag-card {
+  border-left: 6px solid var(--danger);
+  background: #fff5f5;
+}
+
+.redflag-card strong {
+  color: var(--danger);
+}
+
+/* =========================
+   LAW APPLIED (AUTHORITY)
+   ========================= */
+.law-card {
+  border-left: 6px solid var(--accent);
+  background: #f0f6ff;
+}
+
+.law-card strong {
+  color: var(--accent);
+}
+
+.law-card .small-text {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   ACTIONS (GUIDANCE)
+   ========================= */
+.action-card {
+  border-left: 6px solid var(--success);
+  background: #f0fff4;
+}
+
+.action-card strong {
+  color: var(--success);
+}
+
+/* =========================
+   FINAL SUMMARY (DECISION)
+   ========================= */
+.final-card {
+  border: 2px dashed var(--accent);
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+}
+
+.final-card strong {
+  font-size: 16px;
+}
+
+/* =========================
+   REFERENCES (TRUST)
+   ========================= */
+.reference-card {
+  background: #f9fafb;
+}
+
+.reference-card a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* =========================
+   LIST READABILITY
+   ========================= */
+.simple-list {
+  padding-left: 18px;
+  margin-top: 8px;
+}
+
+.simple-list li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.simple-list li::marker {
+  font-weight: bold;
+}
+
+/* =========================
+   ICON ROW (CONSISTENT HEADER)
+   ========================= */
+.icon-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =========================
+   SMALL MUTED TEXT
+   ========================= */
+.small-text {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   PRINT OPTIMIZATION (BONUS)
+   ========================= */
+@media print {
+  .btn,
+  .speak-btn {
+    display: none !important;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+}
+
+
+@keyframes glassFade {
+  0% {
+    opacity: 0.4;
+    filter: blur(6px);
+    transform: translateY(4px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
