@@ -238,13 +238,14 @@ Static deployment
 HTTPS enabled
 
 # 🧪 How to Run Locally
+
 Backend
 pip install -r requirements.txt
 uvicorn main:app --reload
 
 Frontend
-# Open index.html directly
-# or use Live Server
+ Open index.html directly
+ or use Live Server
 
 # DISCLAIMER
 JURIS is an AI-powered legal awareness tool.
