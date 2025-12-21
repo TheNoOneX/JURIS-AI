@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="/frontend/fav-icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/frontend/fav-icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/frontend/fav-icons/favicon-32x32.png">
+</head>
+<body>
+
+<div id="loader" class="loader-overlay hidden">
+  <div class="spinner"></div>
+</div>
+
+<div class="app">
+  <div class="header-hero">
+    <h2 data-i18n="upload_title">📄 Upload Document</h2>
+  </div>
+
+  <div class="content-area">
+
+    <!-- Upload Card (UNCHANGED) -->
+    <div class="card" style="text-align: center; border-style: dashed; border-width: 2px;">
+      <div style="font-size: 48px; margin-bottom: 10px;">📸</div>
+      <p data-i18n="upload_text" style="font-weight: 500;">Upload Photo or PDF</p>
+      <input
+        type="file"
+        id="documentFile"
+        class="file-input"
+        accept="image/*,.pdf,.doc,.docx"
+      >
+      <p
+        id="fileName"
+        style="font-size: 13px; color: var(--accent); margin-top: 10px;"
+      ></p>
+    </div>
+
+    <!-- Output Detail Regulator (MATCHED WITH VOICE UI) -->
+    <div class="card" style="margin-top:12px;">
+      <p style="font-weight:500; margin-bottom:8px;" data-i18n="upload_output_level_title">Output Detail Level</p>
+
+      <div class="verbosity-pill">
+        <input type="radio" id="u-basic" name="verbosity" value="basic" checked>
+        <label for="u-basic" data-i18n="upload_level_basic">Basic</label>
+
+        <input type="radio" id="u-medium" name="verbosity" value="medium">
+        <label for="u-medium" data-i18n="upload_level_medium">Medium</label>
+
+        <input type="radio" id="u-advanced" name="verbosity" value="advanced">
+        <label for="u-advanced" data-i18n="upload_level_advanced">Advanced</label>
+      </div>
+
+
+    </div>
+
+    <!-- Analyze Button (UNCHANGED) -->
+    <button class="btn" onclick="saveDocument()" data-i18n="continue">
+      Analyze
+    </button>
+
+  </div>
+</div>
+
+<script src="new_script.js"></script>
+</body>
+</html>

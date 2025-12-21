@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Write Problem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="/frontend/fav-icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/frontend/fav-icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/frontend/fav-icons/favicon-32x32.png">
+</head>
+<body>
+
+<div id="loader" class="loader-overlay hidden"><div class="spinner"></div></div>
+
+<div class="app">
+  <div class="header-hero">
+    <h2 data-i18n="write_title">✍️ Write Problem</h2>
+  </div>
+
+  <div class="content-area">
+    <div class="card">
+      <textarea id="userProblem" rows="8" class="problem-textarea" data-i18n-placeholder="write_placeholder" placeholder="Describe your issue..."></textarea>
+      <p class="helper-text" style="font-size: 13px; color: var(--text-muted); margin-top: 10px;" data-i18n="write_example">Example: Landlord issues...</p>
+    </div>
+
+    <!-- Output Detail Regulator (ADDED) -->
+    <div class="card" style="margin-top:12px;">
+      <p style="font-weight:500; margin-bottom:8px;" data-i18n="write_output_level_title">Output Detail Level</p>
+
+      <div class="verbosity-pill">
+        <input type="radio" id="w-basic" name="verbosity" value="basic" checked>
+        <label for="w-basic" data-i18n="upload_level_basic">Basic</label>
+
+        <input type="radio" id="w-medium" name="verbosity" value="medium">
+        <label for="w-medium" data-i18n="upload_level_medium">Medium</label>
+
+        <input type="radio" id="w-advanced" name="verbosity" value="advanced">
+        <label for="w-advanced" data-i18n="upload_level_advanced">Advanced</label>
+      </div>
+    </div>
+
+    <button class="btn" onclick="saveProblem()" data-i18n="continue">Analyze</button>
+  </div>
+</div>
+
+<script src="new_script.js"></script>
+</body>
+</html>

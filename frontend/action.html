@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Action</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="/frontend/fav-icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/frontend/fav-icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/frontend/fav-icons/favicon-32x32.png">
+</head>
+<body>
+
+<div class="app">
+  <div class="header-hero" style="padding-bottom: 60px;">
+    <h2 data-i18n="choose_help">How can we help?</h2>
+  </div>
+
+  <div class="content-area">
+    <div class="action-item" onclick="location.href='upload.html'">
+      <div class="action-icon">📄</div>
+      <div>
+        <strong style="display:block" data-i18n="upload_document">Upload Document</strong>
+        <span style="font-size:13px; color:var(--text-muted)">Scan legal papers</span>
+      </div>
+    </div>
+
+    <div class="action-item" onclick="location.href='write.html'">
+      <div class="action-icon">✍️</div>
+      <div>
+        <strong style="display:block" data-i18n="write_problem">Write Problem</strong>
+        <span style="font-size:13px; color:var(--text-muted)">Type manually</span>
+      </div>
+    </div>
+
+    <div class="card" style="text-align: center; border-color: var(--accent); margin-top: 20px;" onclick="location.href='voice.html'">
+      <div style="font-size: 40px; margin-bottom: 10px;">🎙️</div>
+      <strong style="font-size: 18px; color: var(--primary);" data-i18n="speak_problem">Speak Your Problem</strong>
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 5px;">Tap to record voice</p>
+    </div>
+  </div>
+</div>
+
+<script src="new_script.js"></script>
+</body>
+</html>

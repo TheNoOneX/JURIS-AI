@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JURIS_HOMEPAGE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="/frontend/fav-icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/frontend/fav-icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/frontend/fav-icons/favicon-16x16.png">
+
+</head>
+<body>
+
+<div class="app">
+  <div class="header-hero">
+    <img src="assets/JURIS LOGO.png" class="logo-img" alt="JURIS-AI">
+    <h2 data-i18n="app_name">Democratizing Justice</h2>
+    <p data-i18n="tagline">Legal help made simple</p>
+  </div>
+
+  <div class="content-area">
+    <div class="card">
+      <label data-i18n="select_language" style="font-weight: 600; font-size: 12px; color: var(--text-muted); text-transform: uppercase;">SELECT LANGUAGE</label>
+      <select id="language" onchange="onLanguageChange()">
+        <option value="English">English</option checked>
+        <option value="Hindi">हिन्दी</option>
+        <option value="Marathi">मराठी</option>
+        <option value="Tamil">தமிழ்</option>
+        <option value="Telugu">Telugu</option>
+      </select>
+    </div>
+
+    <button class="btn" onclick="goNext()" data-i18n="continue">Continue</button>
+  </div>
+</div>
+
+<script src="new_script.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header-hero">
+    <h2 data-i18n="result_title">📄 Your Legal Help</h2>
+    <p class="muted-text" data-i18n="based_on_law">
+      Based on Indian law
+    </p>
+  </div>
+
+  <!-- RESULT FLOW START -->
+  <div class="content-area result-flow">
+
+    <!-- RISK INDICATOR (ANCHOR) -->
+    <div class="card risk-card fade-glass">
+      <div class="risk-header">
+        <span id="riskBadge" class="risk-badge">RISK</span>
+        <span id="riskScoreText" class="risk-score-text"></span>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="card summary-card fade-glass">
+      <div class="icon-row">
+        🧠 <strong data-i18n="summary">Summary</strong>
+        <button class="speak-btn"
+                onclick="toggleSpeak(this)"
+                data-speak-target="summaryText"
+                title="Listen">
+          🔊
+        </button>
+      </div>
+      <p id="summaryText">
+        We are analyzing your problem…
+      </p>
+    </div>
+
+    <!-- RED FLAGS -->
+    <div class="card redflag-card fade-glass">
+      <div class="icon-row">
+        🚩 <strong data-i18n="what_wrong">What is wrong</strong>
+      </div>
+      <ul id="redFlags" class="simple-list"></ul>
+    </div>
+
+    <!-- LAW APPLIED -->
+    <div class="card law-card fade-glass">
+      <div class="icon-row">
+        ⚖️ <strong data-i18n="law_applied">Law Applied</strong>
+      </div>
+      <ul id="lawList" class="simple-list"></ul>
+      <p class="muted-text small-text" data-i18n="law_source">
+        Source: Government of India
+      </p>
+    </div>
+
+    <!-- WHAT YOU SHOULD DO -->
+    <div class="card action-card fade-glass">
+      <div class="icon-row">
+        👉 <strong data-i18n="next_steps">What you should do</strong>
+        <button class="speak-btn"
+                onclick="toggleSpeak(this)"
+                data-speak-target="nextSteps"
+                title="Listen">
+          🔊
+        </button>
+      </div>
+      <ul id="nextSteps" class="simple-list"></ul>
+    </div>
+
+    <!-- FINAL DECISION SUMMARY -->
+    <div class="card final-card fade-glass">
+      <div class="icon-row">
+        ✅ <strong data-i18n="final_summary_title">Final Decision Summary</strong>
+        <button class="speak-btn"
+                onclick="toggleSpeak(this)"
+                data-speak-target="finalSummary"
+                title="Listen">
+          🔊
+        </button>
+      </div>
+      <ul id="finalSummary" class="simple-list"></ul>
+    </div>
+
+    <!-- REFERENCES -->
+    <div class="card reference-card fade-glass">
+      <div class="icon-row">
+        🔗 <strong data-i18n="references">References</strong>
+      </div>
+      <ul id="references" class="simple-list"></ul>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <button class="btn" onclick="copyResult()" data-i18n="copy">
+      Copy
+    </button>
+
+    <button class="btn btn-success" onclick="window.print()" data-i18n="print">
+      Print
+    </button>
+
+  </div>
+  <!-- RESULT FLOW END -->
+
+</div>
+
+<script src="new_script.js"></script>
+</body>
+</html>
+

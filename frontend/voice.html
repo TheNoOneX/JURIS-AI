@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voice Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="/frontend/fav-icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/frontend/fav-icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/frontend/fav-icons/favicon-32x32.png">
+</head>
+<body>
+
+<div id="loader" class="loader-overlay hidden">
+  <div class="spinner"></div>
+  <p id="loaderText">Processing...</p>
+</div>
+
+<div class="app">
+  <div class="header-hero">
+    <h2 data-i18n="voice_title">🎙️ Speak Your Problem</h2>
+    <p id="langText"></p>
+  </div>
+
+  <div class="content-area">
+    <div class="card" style="text-align: center;">
+      <div class="mic-wrapper">
+        <div id="micButton" class="mic-btn-large" onclick="toggleRecording()">🎤</div>
+      </div>
+      <p id="voiceStatus" style="font-weight: 500; color: var(--text-muted);" data-i18n="voice_hint">Tap mic to start</p>
+    </div>
+
+    <div class="card">
+      <strong style="font-size: 12px; text-transform: uppercase; color: var(--text-muted);" data-i18n="summary">WHAT WE HEARD:</strong>
+      <p id="spokenText" style="margin-top: 10px; font-style: italic; min-height: 40px;">...</p>
+    </div>
+
+    <!-- Output Detail Regulator (ADDED) -->
+    <div class="card" style="margin-top:12px;">
+      <p style="font-weight:500; margin-bottom:8px;" data-i18n="voice_output_level_title">Output Detail Level</p>
+
+      <div class="verbosity-pill">
+        <input type="radio" id="v-basic" name="verbosity" value="basic" checked>
+        <label for="v-basic" data-i18n="upload_level_basic">Basic</label>
+
+        <input type="radio" id="v-medium" name="verbosity" value="medium">
+        <label for="v-medium" data-i18n="upload_level_medium">Medium</label>
+
+        <input type="radio" id="v-advanced" name="verbosity" value="advanced">
+        <label for="v-advanced" data-i18n="upload_level_advanced">Advanced</label>
+      </div>
+    </div>
+
+    <button class="btn" onclick="saveVoiceText()" data-i18n="continue">Continue</button>
+  </div>
+</div>
+
+<script src="new_script.js"></script>
+</body>
+</html>
