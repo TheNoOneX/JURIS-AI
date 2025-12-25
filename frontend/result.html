@@ -5,6 +5,9 @@
   <title>Result</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="/frontend/fav-icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/frontend/fav-icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/frontend/fav-icons/favicon-32x32.png">
 </head>
 <body>
 
@@ -49,6 +52,12 @@
     <div class="card redflag-card fade-glass">
       <div class="icon-row">
         🚩 <strong data-i18n="what_wrong">What is wrong</strong>
+        <button class="speak-btn"
+                onclick="toggleSpeak(this)"
+                data-speak-target="redFlags"
+                title="Listen">
+          🔊
+        </button>
       </div>
       <ul id="redFlags" class="simple-list"></ul>
     </div>
