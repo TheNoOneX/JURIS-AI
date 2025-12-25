@@ -8,11 +8,17 @@ Making legal understanding simple, accessible, and AI-powered.
 
 In India, legal language is often:
 
-Too complex for common citizens
+Too complex, difficult and lengthy for common citizens
 
 Difficult to understand without a lawyer
 
 Scattered across multiple laws and sources
+
+Hidden clauses cause users to get scammed 
+
+Language barriers limit understanding
+
+Legal help is costly and inaccessible
 
 This results in:
 
@@ -28,13 +34,13 @@ JURIS is an AI-powered judicial intelligence platform that helps users:
 
 Understand legal problems in simple language
 
-Analyze legal risk levels
+Analyze legal risk levels and detects red flags and risky terms
 
 Get actionable next steps
 
 Interact via text, voice, or documents
 
-Access the system in multiple Indian languages
+The system supports multilingual document analysis.
 
 All this is done without replacing lawyers, but by empowering citizens with clarity and awareness.
 
