@@ -552,6 +552,9 @@ function saveDocument() {
 
   const formData = new FormData();
   formData.append("file", file);
+  const lang = localStorage.getItem("selectedLanguage") || "English";
+  formData.append("language", lang);
+
 
   fetch(`${API_BASE}/api/analyze-image`, {
     method: "POST",
@@ -603,17 +606,61 @@ document.addEventListener("DOMContentLoaded", () => {
   fillReferences("references", data.references);
 });
 
+
+
 function fillList(id, items = []) {
   const ul = document.getElementById(id);
-  if (!ul || !Array.isArray(items)) return;
+  if (!ul) return;
 
   ul.innerHTML = "";
-  items.forEach(text => {
+
+  if (!Array.isArray(items) || items.length === 0) {
     const li = document.createElement("li");
-    li.innerText = text;
+    li.innerText = "No information available.";
     ul.appendChild(li);
+    return;
+  }
+
+  items.forEach(item => {
+    const li = document.createElement("li");
+    let text = "";
+
+    // -------- RED FLAGS --------
+    if (item.title && item.reason) {
+      text = `${item.title}: ${item.reason}`;
+    }
+
+    // -------- ACTIONS --------
+    else if (item.step && item.why) {
+      text = `${item.step} – ${item.why}`;
+    }
+
+    // -------- LAW OBJECT --------
+    else if (item.act && item.section) {
+      text = `${item.act} (${item.section})`;
+      if (item.explanation) {
+        text += ` – ${item.explanation}`;
+      }
+    }
+
+    // -------- SIMPLE STRING --------
+    else if (typeof item === "string") {
+      text = item;
+    }
+
+    // -------- FALLBACK --------
+    else if (item.text) {
+      text = item.text;
+    }
+
+    // Render only meaningful content
+    if (text.trim() !== "") {
+      li.innerText = text;
+      ul.appendChild(li);
+    }
   });
 }
+
 
 
 
@@ -770,12 +817,7 @@ function stopSpeaking() {
 
 
 
-/* ... existing global config and translations ... */
 
-// ... (Keep applyLanguage, onLanguageChange, goNext, etc. as they are) ...
-
-
-// ... (Keep existing translations and API_BASE) ...
 
 /*************************
  * RISK ANIMATION LOGIC
