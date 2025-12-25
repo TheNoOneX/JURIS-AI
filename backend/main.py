@@ -335,8 +335,9 @@ async def analyze_image(
 
         if not text.strip():
             print("📸 OCR empty → Vision fallback")
+            file_part = make_file_part(data,file.content_type)
             prompt = build_prompt("Analyze image content.", "agreement", language, verbosity)
-            response = call_gemini(prompt, image=image)
+            response = call_gemini(prompt, file_part = file_part)
             return enforce_schema(extract_json(response.text))
 
     elif file.content_type == "application/pdf":
@@ -370,3 +371,4 @@ async def analyze_image(
     prompt = build_prompt(text, doc_type, language, verbosity)
     response = call_gemini(prompt)
     return enforce_schema(extract_json(response.text))
+
