@@ -392,6 +392,7 @@ function saveProblem() {
   const formData = new FormData();
   formData.append("problem", text);
   formData.append("language", lang);
+  formData.append("verbosity", localStorage.getItem("output_detail_level") || "basic");
 
   fetch(`${API_BASE}/api/analyze-text`, {
     method: "POST",
@@ -507,6 +508,7 @@ function saveVoiceText() {
   const formData = new FormData();
   formData.append("problem", cleanedText);
   formData.append("language", lang);
+  formData.append("verbosity", localStorage.getItem("output_detail_level") || "basic");
 
   fetch(`${API_BASE}/api/analyze-text`, { method: "POST", body: formData })
     .then(res => res.json())
@@ -554,6 +556,7 @@ function saveDocument() {
   formData.append("file", file);
   const lang = localStorage.getItem("selectedLanguage") || "English";
   formData.append("language", lang);
+  formData.append("verbosity", localStorage.getItem("output_detail_level") || "basic");
 
 
   fetch(`${API_BASE}/api/analyze-image`, {
@@ -955,6 +958,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   })();
   
+
 
 
 
